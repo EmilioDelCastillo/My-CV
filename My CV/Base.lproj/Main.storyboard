@@ -352,6 +352,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="dWC-26-HuG" id="8Mh-l3-vfU"/>
+                        <outlet property="interviewButton" destination="Mvx-Az-5eH" id="Svz-Ot-f4b"/>
+                        <outlet property="textView" destination="AIU-8i-ili" id="5Gf-BU-79w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsi-iv-8Sf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
