@@ -379,7 +379,7 @@
         <!--My CV-->
         <scene sceneID="tC3-eA-ARJ">
             <objects>
-                <tabBarController title="My CV" automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="dXm-Ma-nLq" sceneMemberID="viewController">
+                <tabBarController title="My CV" automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="dXm-Ma-nLq" customClass="MainViewController" customModule="My_CV" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="My CV" id="ZeJ-tt-r9D">
                         <barButtonItem key="leftBarButtonItem" id="Q1j-Ro-SNp">
@@ -399,6 +399,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="navItem" destination="ZeJ-tt-r9D" id="Bxo-ct-wKp"/>
                         <segue destination="ayB-gd-JnH" kind="relationship" relationship="viewControllers" id="hhr-nZ-FOo"/>
                         <segue destination="WOj-cI-nqH" kind="relationship" relationship="viewControllers" id="kab-qs-2Ux"/>
                         <segue destination="Fhh-t2-8q5" kind="relationship" relationship="viewControllers" id="dHt-Io-bI3"/>
