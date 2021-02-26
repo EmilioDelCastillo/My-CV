@@ -11,32 +11,11 @@ import UIKit
 class CardView: UIView {
 
     var title: String = "Titre test"
-
-    var desc: String = "Une longue description pour tester l'affichage !"
-
-    private var titleString: NSAttributedString{
-        return centeredAttributedString(title, fontSize: 0.0, style: .headline)
-    }
-    private var descriptionString: NSAttributedString{
-        return centeredAttributedString(desc, fontSize: 0.0, style: .body)
-    }
-
     lazy private var titleLabel = createTitleLabel()
-    lazy private var descriptionLabel = createDescriptionLabel()
-    
-    private func createTitleLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 1
-        addSubview(label)
-        return label
-    }
-    
-    private func createDescriptionLabel() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        addSubview(label)
-        return label
-    }
+
+    var desc: String = "Une trèèèèèèèès très très trèèèès longue description pour tester l'affichage ! C'est que c'est pas facile tout ça"
+
+    lazy private var descriptionLabel = createDescriptionTextView()
     
     // Accessibility
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -56,31 +35,11 @@ class CardView: UIView {
         return NSAttributedString(string: string, attributes: [.paragraphStyle: paragraphStyle, .font: font, .foregroundColor: #colorLiteral(red: 0.2941176471, green: 0.2470588235, blue: 0.4470588235, alpha: 1)])
     }
     
-    private func configureTitleLabel(_ label: UILabel){
-        label.attributedText = titleString
-        label.frame.size = CGSize.zero
-        label.sizeToFit()
-    }
-    private func configureDescriptionLabel(_ label: UILabel){
-        label.attributedText = descriptionString
-        label.frame.size = CGSize.zero
-        label.frame.size = sizeThatFits(bounds.size)
-    }
     
     override func layoutSubviews() {
-        // TODO: Remove magic numbers
         super.layoutSubviews()
         configureTitleLabel(titleLabel)
-        let offset = bounds.width / 2 - (titleLabel.frame.size.width / 2)
-        titleLabel.frame.origin = bounds.origin.offsetBy(dx: offset , dy: SizeRatio.offsetToUpperBound)
-        
-        
-        configureDescriptionLabel(descriptionLabel)
-        
-        let titleSize = titleLabel.frame.height
-        descriptionLabel.frame.origin = titleLabel.bounds.origin.offsetBy(dx: 0, dy: titleSize)
-        
-        descriptionLabel.frame.size.height = bounds.height - descriptionLabel.frame.origin.y
+        configureDescriptionTextView(descriptionLabel)
     }
     
     override func draw(_ rect: CGRect) {
@@ -92,19 +51,70 @@ class CardView: UIView {
     }
 }
 
+// MARK: - TITLE
 extension CardView {
-    private struct SizeRatio {
-        static let cornerRadiusToBoundsHeight: CGFloat = 0.1
-        static let offsetToUpperBound: CGFloat = 10
-        static let offsetToTitle: CGFloat = 0.33
+    
+    private var titleString: NSAttributedString {
+        return centeredAttributedString(title, fontSize: 0.0, style: .headline)
     }
-//    private var cornerRadius: CGFloat {
-//        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
-//    }
+    
+    private func configureTitleLabel(_ label: UILabel){
+        label.attributedText = titleString
+//        label.layer.borderWidth = 1 // For debug
+    }
+    
+    private func createTitleLabel() -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 1
+        
+        addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        var constraints = [NSLayoutConstraint]()
+
+        constraints.append(label.topAnchor.constraint(equalTo: self.topAnchor, constant: 5))
+        constraints.append(label.heightAnchor.constraint(equalToConstant: 20))
+        constraints.append(label.centerXAnchor.constraint(equalTo: self.centerXAnchor))
+        constraints.append(label.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -5))
+        
+        NSLayoutConstraint.activate(constraints)
+        
+        return label
+    }
 }
 
-extension CGPoint {
-    func offsetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
-        return CGPoint(x: x+dx, y: y+dy)
+// MARK: - DESCRIPTION
+extension CardView {
+    private var descriptionString: NSAttributedString {
+        return centeredAttributedString(desc, fontSize: 0.0, style: .body)
+    }
+
+    private func configureDescriptionTextView(_ label: UITextView){
+        label.attributedText = descriptionString
+//        label.layer.borderWidth = 1 // For debug
+        
+    }
+    
+    private func createDescriptionTextView() -> UITextView {
+        let label = UITextView()
+        label.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0)
+
+        label.isEditable = false
+        label.isSelectable = false
+        label.isScrollEnabled = false
+        
+        addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        var constraints = [NSLayoutConstraint]()
+        
+        constraints.append(label.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5))
+        constraints.append(self.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 5))
+        constraints.append(label.centerXAnchor.constraint(equalTo: self.centerXAnchor))
+        constraints.append(label.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -10))
+        
+        NSLayoutConstraint.activate(constraints)
+        
+        return label
     }
 }
