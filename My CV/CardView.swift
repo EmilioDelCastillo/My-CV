@@ -45,13 +45,15 @@ class CardView: UIView {
     }
     
     private func centeredAttributedString(_ string: String, fontSize:CGFloat, style: UIFont.TextStyle) -> NSAttributedString {
+        
         var font = UIFont.preferredFont(forTextStyle: style).withSize(fontSize)
         // Accessibility
         font = UIFontMetrics(forTextStyle: style).scaledFont(for: font)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        return NSAttributedString(string: string, attributes: [.paragraphStyle: paragraphStyle, .font: font])
+        
+        return NSAttributedString(string: string, attributes: [.paragraphStyle: paragraphStyle, .font: font, .foregroundColor: #colorLiteral(red: 0.2941176471, green: 0.2470588235, blue: 0.4470588235, alpha: 1)])
     }
     
     private func configureTitleLabel(_ label: UILabel){
@@ -74,14 +76,18 @@ class CardView: UIView {
         
         
         configureDescriptionLabel(descriptionLabel)
-        descriptionLabel.frame.origin = bounds.origin.offsetBy(dx: 0, dy: 10) // Magic numbers
+        
+        let titleSize = titleLabel.frame.height
+        descriptionLabel.frame.origin = titleLabel.bounds.origin.offsetBy(dx: 0, dy: titleSize)
+        
+        descriptionLabel.frame.size.height = bounds.height - descriptionLabel.frame.origin.y
     }
     
     override func draw(_ rect: CGRect) {
         // TODO: Remove magic numbers
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 16) // Magic numbers
         roundedRect.addClip()
-        UIColor.lightGray.setFill()
+        #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1).setFill()
         roundedRect.fill()
     }
 }
