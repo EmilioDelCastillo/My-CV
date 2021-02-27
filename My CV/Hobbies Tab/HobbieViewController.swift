@@ -35,6 +35,7 @@ extension HobbieViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.cardView.title = data[indexPath.row].title
         cell.cardView.desc = data[indexPath.row].desc
+        cell.cardView.layoutIfNeeded()
         
         return cell
     }
