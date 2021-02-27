@@ -20,7 +20,8 @@ class HobbieViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.estimatedRowHeight = 70
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
 }
