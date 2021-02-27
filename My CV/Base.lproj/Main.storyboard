@@ -192,14 +192,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hobbieCell" id="ZqE-eN-XXK" customClass="HobbieCustomCell" customModule="My_CV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="146.66667175292969"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="156.66667175292969"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZqE-eN-XXK" id="viN-fQ-ETQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="146.66667175292969"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="156.66667175292969"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ul-e6-ary" customClass="CardView" customModule="My_CV" customModuleProvider="target">
-                                                    <rect key="frame" x="30" y="10.000000000000007" width="315" height="126.66666666666669"/>
+                                                    <rect key="frame" x="30" y="10" width="315" height="136.66666666666666"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                             </subviews>
@@ -359,6 +359,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3RA-rC-cZS">
+                                <rect key="frame" x="177.66666666666666" y="110" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TlX-YE-326"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -369,8 +372,10 @@
                             <constraint firstItem="AIU-8i-ili" firstAttribute="top" secondItem="dWC-26-HuG" secondAttribute="bottom" constant="8" symbolic="YES" id="V0d-K5-LqW"/>
                             <constraint firstItem="TlX-YE-326" firstAttribute="bottom" secondItem="Mvx-Az-5eH" secondAttribute="bottom" constant="21" id="g2o-YS-DZs"/>
                             <constraint firstItem="AIU-8i-ili" firstAttribute="leading" secondItem="TlX-YE-326" secondAttribute="leading" constant="16" id="g9z-fL-hYi"/>
+                            <constraint firstItem="3RA-rC-cZS" firstAttribute="centerX" secondItem="dWC-26-HuG" secondAttribute="centerX" id="hS8-9E-fIx"/>
                             <constraint firstItem="dWC-26-HuG" firstAttribute="centerX" secondItem="TlX-YE-326" secondAttribute="centerX" id="ihY-og-MDi"/>
                             <constraint firstItem="TlX-YE-326" firstAttribute="trailing" secondItem="AIU-8i-ili" secondAttribute="trailing" constant="16" id="q3k-vO-Mgo"/>
+                            <constraint firstItem="3RA-rC-cZS" firstAttribute="centerY" secondItem="dWC-26-HuG" secondAttribute="centerY" id="ynN-01-4P2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contact Info" id="lQz-ga-t5i">
@@ -379,6 +384,7 @@
                     <connections>
                         <outlet property="imageView" destination="dWC-26-HuG" id="8Mh-l3-vfU"/>
                         <outlet property="interviewButton" destination="Mvx-Az-5eH" id="Svz-Ot-f4b"/>
+                        <outlet property="spinner" destination="3RA-rC-cZS" id="YrC-fa-VIg"/>
                         <outlet property="textView" destination="AIU-8i-ili" id="5Gf-BU-79w"/>
                     </connections>
                 </viewController>

@@ -9,19 +9,39 @@ import UIKit
 
 class ContactInfoView: UIViewController {
 
+    // My LinkedIn profile picture
+    // I don't know how the URL will update if I change it
+    let imageURL = URL(string: "https://media-exp1.licdn.com/dms/image/C5603AQEz1Q96XuyBlg/profile-displayphoto-shrink_200_200/0/1611090527416?e=1619654400&v=beta&t=lsTI7jIUEzvvZiyQnpiKCxDmmFtxg7QfeslNaM0d270")
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     @IBOutlet weak var interviewButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // MARK: - Set the image
-        imageView.layer.cornerRadius = imageView.frame.width / 2 // It makes it round
-        imageView.image = UIImage(named: "photo")
-        imageView.contentMode = .scaleAspectFill
+        spinner.startAnimating()
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let url = self?.imageURL else { return }
+            
+            let image = try? UIImage(data: Data(contentsOf: url))
+            let photo = UIImage(named: "photo")! // It has to exist!
+
+            DispatchQueue.main.async {
+                self?.imageView.layer.cornerRadius = (self?.imageView.frame.width)! / 2 // It makes it round
+                self?.imageView.image = image ?? photo
+                self?.imageView.contentMode = .scaleAspectFill
+                self?.spinner.stopAnimating()
+            }
+        }
+        
         
         // MARK: - Set the button
         // TODO: Get rid of the magic number
