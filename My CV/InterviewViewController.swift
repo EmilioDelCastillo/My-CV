@@ -8,7 +8,7 @@
 import UIKit
 
 class InterviewViewController: UIViewController {
-    let interviewTypes = ["Sur place", "En visioconférence"]
+    private let interviewTypes = ["Sur place", "En visioconférence"]
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var typePicker: UIPickerView!

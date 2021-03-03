@@ -14,7 +14,7 @@ class HobbieViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
-    var data = HobbiesData.shared.hobbies
+    private var data = HobbiesData.shared.hobbies
     
     override func viewDidLoad() {
         super.viewDidLoad()

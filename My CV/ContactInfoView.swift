@@ -11,7 +11,7 @@ class ContactInfoView: UIViewController {
 
     // My LinkedIn profile picture
     // I don't know how the URL will update if I change it
-    let imageURL = URL(string: "https://media-exp1.licdn.com/dms/image/C5603AQEz1Q96XuyBlg/profile-displayphoto-shrink_200_200/0/1611090527416?e=1619654400&v=beta&t=lsTI7jIUEzvvZiyQnpiKCxDmmFtxg7QfeslNaM0d270")
+    private let imageURL = URL(string: "https://media-exp1.licdn.com/dms/image/C5603AQEz1Q96XuyBlg/profile-displayphoto-shrink_200_200/0/1611090527416?e=1619654400&v=beta&t=lsTI7jIUEzvvZiyQnpiKCxDmmFtxg7QfeslNaM0d270")
     
     @IBOutlet weak var imageView: UIImageView!
     

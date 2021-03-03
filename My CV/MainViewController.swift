@@ -11,7 +11,7 @@ class MainViewController: UITabBarController {
 
     @IBOutlet weak var navItem: UINavigationItem!
     
-    let titles = ["Formation", "Expérience", "Compétences", "Loisirs"]
+    private let titles = ["Formation", "Expérience", "Compétences", "Loisirs"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

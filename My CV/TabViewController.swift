@@ -9,7 +9,7 @@ import UIKit
 
 class TabViewController: UIViewController {
 
-    let card = CardView();
+    private let card = CardView();
     
     override func viewDidLoad() {
         super.viewDidLoad()

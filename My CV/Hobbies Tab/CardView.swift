@@ -10,13 +10,13 @@ import UIKit
 @IBDesignable
 class CardView: UIView {
 
-    let offset: CGFloat = 10
+    private let offset: CGFloat = 10
     
     var title: String = "Titre test"
     var desc: String = "Une trèèèèèèèès très très trèèèès longue description pour tester l'affichage ! C'est que c'est pas facile tout ça"
 
-    var titleLabel = UILabel()
-    var descriptionLabel = UILabel()
+    private var titleLabel = UILabel()
+    private var descriptionLabel = UILabel()
 
     // Accessibility
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
